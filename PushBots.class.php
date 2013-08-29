@@ -9,16 +9,18 @@ class PushBots
 {
 	private $appId ;
 	private $appSecret ;
-	private $push ;
+	private $pushData ;
+	private $aliasData;
+	private $deviceToken;
 	public $timeout = 0; 
 	public $connectTimeout = 0;
 	public $sslVerifypeer = 0; 
 
 	public function __construct() {
 		//set Default Push values
-		$this->push['msg'] = "Notification Message";
-		$this->push['badge'] = "+1";
-		$this->push['sound'] = "ping.aiff";
+		$this->pushData['msg'] = "Notification Message";
+		$this->pushData['badge'] = "+1";
+		$this->pushData['sound'] = "ping.aiff";
 	}
 	
 	/**
@@ -35,8 +37,9 @@ class PushBots
 	 * @param	string	$host	PushBots API.
 	 * @param	string	$path	API Path.
 	 */
-	private function sendRequest($method, $host, $path ) {
-		$jsonData = json_encode($this->push);
+	private function sendRequest($method, $host, $path, $data) {
+		$jsonData = json_encode($data);
+		echo $jsonData;
         $ci = curl_init();
 		
 		//PushBots Headers
@@ -60,12 +63,19 @@ class PushBots
             if (!empty($jsonData)) { 
                 curl_setopt($ci, CURLOPT_POSTFIELDS, $jsonData); 
             }
-            break; 
+		break;
+        case 'PUT':
+            curl_setopt($ci, CURLOPT_CUSTOMREQUEST, "PUT");
+            if (!empty($jsonData)) { 
+                curl_setopt($ci, CURLOPT_POSTFIELDS, $jsonData); 
+            }
+		break;
         case 'DELETE': 
             curl_setopt($ci, CURLOPT_CUSTOMREQUEST, 'DELETE'); 
             if (!empty($jsonData)) { 
                 $url = "{$url}?{$jsonData}"; 
-            } 
+            }
+		break;
         }
 		
         curl_setopt($ci, CURLINFO_HEADER_OUT, TRUE ); 
@@ -94,7 +104,17 @@ class PushBots
 	 */
 	 
 	public function Push() {
-		$response = $this->sendRequest( 'POST' ,'https://api.pushbots.com', '/push/all');
+		$response = $this->sendRequest( 'POST' ,'https://api.pushbots.com', '/push/all', $this->pushData);
+		return $response;
+	}
+	
+	
+	/**
+	 * Update Device Alias
+	 */
+	
+	public function setAlias() {
+		$response = $this->sendRequest( 'PUT' ,'https://api.pushbots.com', '/alias' , $this->aliasData);
 		return $response;
 	}
 
@@ -106,27 +126,27 @@ class PushBots
 		if(is_array($platform) != true){
 			$platform = array($platform);
 		}
-		$this->push['platform'] = $platform;
+		$this->pushData['platform'] = $platform;
 	}
 	
 	public function Alert($alert) {
-		$this->push['msg'] = $alert;
+		$this->pushData['msg'] = $alert;
 	}
 
 	public function Badge($badge) {
-		$this->push['badge'] = $badge;
+		$this->pushData['badge'] = $badge;
 	}
 	
 	public function Sound($sound) {
-		$this->push['sound'] = $sound;
+		$this->pushData['sound'] = $sound;
 	}
 	
 	public function Alias($alias) {
-		$this->push['alias'] = $alias;
+		$this->pushData['alias'] = $alias;
 	}
 	
 	public function exceptAlias($alias) {
-		$this->push['except_alias'] = $alias;
+		$this->pushData['except_alias'] = $alias;
 	}
 	
 	/**
@@ -139,8 +159,21 @@ class PushBots
 			$tags = array($tags);
 		}
 		if(count($tags) > 0){
-			$this->push['tags'] = $tags;
+			$this->pushData['tags'] = $tags;
 		}
+	}
+	
+	/**
+	 * set Alias Data
+	 * @param	integer	$platform 0=> iOS or 1=> Android.
+	 * @param	String	$token Device Registration ID.
+	 * @param	String	$alias New Alias.
+	 */
+	 
+	public function AliasData($platform, $token, $alias) {
+			$this->aliasData['platform'] = $platform;
+			$this->aliasData['token'] = $token;
+			$this->aliasData['alias'] = $alias;
 	}
 	
 	
@@ -154,7 +187,7 @@ class PushBots
 			$customfields = array($customfields);
 		}
 		if(count($customfields) > 0){
-			$this->push['payload'] = $customfields;
+			$this->pushData['payload'] = $customfields;
 		}
 	}
 	
@@ -165,13 +198,13 @@ class PushBots
 	 */
 	 
 	public function Geo($country , $gov=null) {
-		$this->push["geo"] = array();
+		$this->pushData["geo"] = array();
 			
 		if($country)
-			$this->push["geo"]["country"] = $country;
+			$this->pushData["geo"]["country"] = $country;
 			
 		if($gov)
-			$this->push["geo"]["gov"] = $gov;
+			$this->pushData["geo"]["gov"] = $gov;
 		
 	}
 	
