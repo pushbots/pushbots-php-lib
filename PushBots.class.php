@@ -1,6 +1,6 @@
 <?php
 /**
- * PushBots Library
+ * PushBots Library v1.1b
  *
  * @category  Library
  * @author    Abdullah Diaa [@Abdullahdiaa]
