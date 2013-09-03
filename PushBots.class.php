@@ -10,6 +10,7 @@ class PushBots
 	private $appId ;
 	private $appSecret ;
 	private $pushData ;
+	private $pushOneData ;
 	private $aliasData;
 	private $deviceToken;
 	public $timeout = 0; 
@@ -108,6 +109,15 @@ class PushBots
 		return $response;
 	}
 	
+	/**
+	 * Push Notification to Single Device
+	 */
+	 
+	public function PushOne() {
+		$response = $this->sendRequest( 'POST' ,'https://api.pushbots.com', '/push/one', $this->pushOneData);
+		return $response;
+	}
+	
 	
 	/**
 	 * Update Device Alias
@@ -174,6 +184,30 @@ class PushBots
 			$this->aliasData['platform'] = $platform;
 			$this->aliasData['token'] = $token;
 			$this->aliasData['alias'] = $alias;
+	}
+	
+	/**
+	 * set Single device Push Data
+	*/
+	
+	//	 * @param	String	$platform 0=> iOS or 1=> Android.
+	public function PlatformOne($platform) {
+		$this->pushOneData['platform'] = $platform;
+	}
+	public function TokenOne($token) {
+		$this->pushOneData['token'] = $token;
+	}
+	
+	public function AlertOne($alert) {
+		$this->pushOneData['msg'] = $alert;
+	}
+
+	public function BadgeOne($badge) {
+		$this->pushOneData['badge'] = $badge;
+	}
+	
+	public function SoundOne($sound) {
+		$this->pushOneData['sound'] = $sound;
 	}
 	
 	
