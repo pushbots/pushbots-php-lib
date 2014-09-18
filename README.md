@@ -28,9 +28,6 @@ $pb->Tags($tags);
 // Custom fields
 $pb->Payload($customfields);
  
-// Country or state
-$pb->Geo($country , $gov);
- 
 // Push it !
 $pb->Push();
  
