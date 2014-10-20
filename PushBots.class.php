@@ -170,6 +170,7 @@ class PushBots
 		}
 		if(count($tags) > 0){
 			$this->pushData['tags'] = $tags;
+			$this->pushOneData['tags'] = $tags;
 		}
 	}
 	
@@ -222,6 +223,7 @@ class PushBots
 		}
 		if(count($customfields) > 0){
 			$this->pushData['payload'] = $customfields;
+			$this->pushOneData['payload'] = $customfields;
 		}
 	}
 	
@@ -233,12 +235,16 @@ class PushBots
 	 
 	public function Geo($country , $gov=null) {
 		$this->pushData["geo"] = array();
-			
-		if($country)
+		$this->pushOneData["geo"] = array();
+
+		if($country){
 			$this->pushData["geo"]["country"] = $country;
-			
-		if($gov)
+			$this->pushOneData["geo"]["country"] = $country;
+		}
+		if($gov){
 			$this->pushData["geo"]["gov"] = $gov;
+			$this->pushOneData["geo"]["gov"] = $gov;
+		}
 		
 	}
 	
