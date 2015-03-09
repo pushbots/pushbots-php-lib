@@ -210,6 +210,18 @@ class PushBots
 		$this->pushOneData['sound'] = $sound;
 	}
 	
+	/**
+	 * set Payload for sending to single device
+	 * @param	array	$payload	Custom fields Array.
+	 */
+	public function PayloadOne($customfields) {
+		if(is_array($customfields) != true){
+			$customfields = array($customfields);
+		}
+		if(count($customfields) > 0){
+			$this->pushOneData['payload'] = $customfields;
+		}
+	}
 	
 	/**
 	 * set Payload
