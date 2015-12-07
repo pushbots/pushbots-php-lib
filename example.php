@@ -4,38 +4,14 @@
 require_once('PushBots.class.php');
 $pb = new PushBots();
 // Application ID
-$appID = '518d187xx';
+$appID = '5563139317795965798b4567';
 // Application Secret
-$appSecret = '25e8507956b62d81xxx';
+$appSecret = '65466c59a0c532030d7cc990fb9a4421';
 $pb->App($appID, $appSecret);
  
-// Notification Settings
-$pb->Alert("test Mesage");
-$pb->Platform(array("0","1"));
-$pb->Badge("+2");
-
-// Update Alias 
-/**
- * set Alias Data
- * @param	integer	$platform 0=> iOS or 1=> Android.
- * @param	String	$token Device Registration ID.
- * @param	String	$alias New Alias.
- */
- 
-$pb->AliasData(1, "APA91bFpQyCCczXC6hz4RTxxxxx", "test");
+//$pb->AliasData(1, "APA91bGRwYKzq7TEV4qyNITFKt8JEQkW8Fd-j9ERBKNEAm3YrfFsb4jO_50fwVhc8mMhrmcsSdqlR2XAFitxFFMjPAE1ENTDBoy45gYmi9ASpZAvPdlirHvj9xr8Uu4lZ5SogMgYxr5t", "myalias");
 // set Alias on the server
-$pb->setAlias();
-
-// Push it !
-$pb->Push();
-
-// Push to Single Device
-// Notification Settings
-$pb->AlertOne("test Mesage");
-$pb->PlatformOne("0");
-$pb->TokenOne("3dfc8119fedeb90d1b8a9xxxxxx");
-
-//Push to Single Device
-$pb->PushOne();
+//$pb->setAlias();
+$pb->removeByAlias("myalias");
 
 ?>

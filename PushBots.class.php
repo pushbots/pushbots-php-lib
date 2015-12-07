@@ -128,6 +128,16 @@ class PushBots
 		return $response;
 	}
 
+	 /**
+	 * Remove devices by Alias
+	 */
+	
+	public function removeByAlias($alias) {
+		$response = $this->sendRequest( 'PUT' ,'https://api.pushbots.com', '/alias/del' , array("alias"=> $alias ));
+		return $response;
+	}
+
+
 	/**
 	 * set Platforms
 	 * @param	array	$platform	Platforms array 0=>iOS , 1=>Android
