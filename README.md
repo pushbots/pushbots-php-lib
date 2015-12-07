@@ -47,5 +47,9 @@ $pb->setAlias();
 // Notification Settings
 $pb->AlertOne("test Mesage");
 
+//Remove device by Alias
+$pb->removeByAlias("myalias");
+
+
 ));
 ```
