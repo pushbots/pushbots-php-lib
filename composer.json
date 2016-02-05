@@ -1,0 +1,7 @@
+{
+    "name": "pushbots/pushbots",
+    "description": "The PushBots PHP Client is a PHP client for PushBots API sending functionality.",
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
