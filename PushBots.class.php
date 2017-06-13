@@ -263,5 +263,14 @@ class PushBots
 			$this->pushData["geo"]["gov"] = $gov;
 		
 	}
-	
+
+    /**
+     * set Schedule time
+     * @param	string	$schedule	The time to send the notification, in UTC e.g. 2015-04-02T11:33:00.
+     */
+
+    public function Schedule($schedule) {
+        $this->pushData['schedule'] = $schedule;
+    }
+
 }

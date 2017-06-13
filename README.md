@@ -24,7 +24,10 @@ $pb->Platform($platforms);
  
 // Tags Array
 $pb->Tags($tags);
- 
+
+// The time to send the notification, in UTC e.g. 2015-04-02T11:33:00.
+$pb->Schedule('2015-04-02T11:33:00');
+
 // Custom fields
 $pb->Payload($customfields);
  
