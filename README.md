@@ -11,6 +11,25 @@ The minimal you'll need to have is:
 require_once('PushBots.class.php');
 $pb = new PushBots();
 // Application ID
+$appID = 'XXXXXXXX';
+// Application Secret
+$appSecret = 'XXXXXXXX';
+$pb->App($appID, $appSecret);
+$pb->Platform(array("0","1","2","3","4","5"));
+// Notification Settings
+$pb->Alert($msg);
+$pb->Push();
+
+```
+
+
+Check other functions below:
+
+```php
+// Push The notification with parameters
+require_once('PushBots.class.php');
+$pb = new PushBots();
+// Application ID
 $appID = '';
 // Application Secret
 $appSecret = '';
