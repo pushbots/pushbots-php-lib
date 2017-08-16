@@ -15,7 +15,7 @@ $appID = 'XXXXXXXX';
 // Application Secret
 $appSecret = 'XXXXXXXX';
 $pb->App($appID, $appSecret);
-$pb->Platform(array("0","1","2","3","4","5"));
+$pb->Platform(array(2,3,4,5);
 // Notification Settings
 $pb->Alert($msg);
 $pb->Push();
