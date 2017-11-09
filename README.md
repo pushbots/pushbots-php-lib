@@ -15,13 +15,29 @@ $appID = 'XXXXXXXX';
 // Application Secret
 $appSecret = 'XXXXXXXX';
 $pb->App($appID, $appSecret);
-$pb->Platform(array(2,3,4,5);
+$pb->Platform(array(0,1,2,3,4,5);
 // Notification Settings
 $pb->Alert($msg);
 $pb->Push();
 
 ```
 
+Send to one device 
+-----
+
+
+```php
+require_once('PushBots.class.php');
+$pb = new PushBots();
+$appID = 'XXXXXXXX';
+$appSecret = 'XXXXXXXX';
+$pb->App($appID, $appSecret);
+$pb->Platform(array(0,1,2,3,4,5);
+$pb->AlertOne($msg);
+$$pb->TokenOne("3dfc8119fedeb90d1b8a9xxxxxx");
+$pb->PushOne();
+
+```
 
 Check other functions below:
 
