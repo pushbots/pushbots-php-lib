@@ -2,7 +2,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pushbots.svg?style=social&label=Follow&style=plastic)](https://twitter.com/pushbots)
 
-The [PushBots PHP Client] (http://www.pushbots.com/) is a PHP client for PushBots API sending functionality.
+> The [PushBots PHP Client] (http://www.pushbots.com/) is a PHP client for PushBots API sending functionality.
 
 Usage
 -----
