@@ -1,4 +1,4 @@
-# pushbots-php-lib 
+# DEPRECATED PLEASE USE NEW PACKAGE https://github.com/pushbots/pushbots-php
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pushbots.svg?style=social&label=Follow&style=plastic)](https://twitter.com/pushbots)
 
